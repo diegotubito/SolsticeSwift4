@@ -12,12 +12,6 @@
 		84C5F6792262477B0090B87B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F6782262477B0090B87B /* Assets.xcassets */; };
 		84C5F67C2262477B0090B87B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F67A2262477B0090B87B /* LaunchScreen.storyboard */; };
 		84C5F6872262477B0090B87B /* SolsticeSwift4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F6862262477B0090B87B /* SolsticeSwift4Tests.swift */; };
-		84C5F6952262487F0090B87B /* TableViewCellRegisterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F6932262487F0090B87B /* TableViewCellRegisterList.swift */; };
-		84C5F6962262487F0090B87B /* TableViewCellRegisterList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F6942262487F0090B87B /* TableViewCellRegisterList.xib */; };
-		84C5F69F226248930090B87B /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F699226248930090B87B /* ListModel.swift */; };
-		84C5F6A0226248930090B87B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F69B226248930090B87B /* ListViewController.swift */; };
-		84C5F6A1226248930090B87B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F69D226248930090B87B /* ListViewModel.swift */; };
-		84C5F6A2226248930090B87B /* ListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F69E226248930090B87B /* ListViewModelProtocol.swift */; };
 		84C5F6A8226248A60090B87B /* DDBarLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F6A5226248A50090B87B /* DDBarLoader.swift */; };
 		84C5F6A9226248A60090B87B /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F6A7226248A60090B87B /* Services.swift */; };
 		84C5F6AB226248C00090B87B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F6AA226248C00090B87B /* HomeViewController.swift */; };
@@ -55,12 +49,6 @@
 		84C5F6822262477B0090B87B /* SolsticeSwift4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolsticeSwift4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C5F6862262477B0090B87B /* SolsticeSwift4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolsticeSwift4Tests.swift; sourceTree = "<group>"; };
 		84C5F6882262477B0090B87B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84C5F6932262487F0090B87B /* TableViewCellRegisterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterList.swift; sourceTree = "<group>"; };
-		84C5F6942262487F0090B87B /* TableViewCellRegisterList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellRegisterList.xib; sourceTree = "<group>"; };
-		84C5F699226248930090B87B /* ListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
-		84C5F69B226248930090B87B /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		84C5F69D226248930090B87B /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		84C5F69E226248930090B87B /* ListViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelProtocol.swift; sourceTree = "<group>"; };
 		84C5F6A5226248A50090B87B /* DDBarLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDBarLoader.swift; sourceTree = "<group>"; };
 		84C5F6A7226248A60090B87B /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		84C5F6AA226248C00090B87B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -137,51 +125,6 @@
 				84C5F6882262477B0090B87B /* Info.plist */,
 			);
 			path = SolsticeSwift4Tests;
-			sourceTree = "<group>";
-		};
-		84C5F6922262487F0090B87B /* RegisterCell */ = {
-			isa = PBXGroup;
-			children = (
-				84C5F6932262487F0090B87B /* TableViewCellRegisterList.swift */,
-				84C5F6942262487F0090B87B /* TableViewCellRegisterList.xib */,
-			);
-			path = RegisterCell;
-			sourceTree = "<group>";
-		};
-		84C5F697226248930090B87B /* List */ = {
-			isa = PBXGroup;
-			children = (
-				84C5F698226248930090B87B /* Model */,
-				84C5F69C226248930090B87B /* ViewModel */,
-				84C5F69A226248930090B87B /* View */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		84C5F698226248930090B87B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				84C5F699226248930090B87B /* ListModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84C5F69A226248930090B87B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84C9648F2268230D009A255F /* Cells */,
-				84C5F69B226248930090B87B /* ListViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84C5F69C226248930090B87B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				84C5F69D226248930090B87B /* ListViewModel.swift */,
-				84C5F69E226248930090B87B /* ListViewModelProtocol.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84C5F6A3226248A50090B87B /* MyCustomViews */ = {
@@ -261,14 +204,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		84C9648F2268230D009A255F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				84C5F6922262487F0090B87B /* RegisterCell */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		84C964902268231B009A255F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,7 +253,6 @@
 			children = (
 				84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */,
 				84C964912268D116009A255F /* ContactList */,
-				84C5F697226248930090B87B /* List */,
 				84C5F6AC226649080090B87B /* ContanctDetail */,
 			);
 			path = Contacts;
@@ -407,7 +341,6 @@
 			files = (
 				84C5F67C2262477B0090B87B /* LaunchScreen.storyboard in Resources */,
 				84C5F6792262477B0090B87B /* Assets.xcassets in Resources */,
-				84C5F6962262487F0090B87B /* TableViewCellRegisterList.xib in Resources */,
 				84C5F6B62266A4390090B87B /* TableViewCellDetailHeader.xib in Resources */,
 				84C5F677226247710090B87B /* Main.storyboard in Resources */,
 				84C5F6BB22678CD70090B87B /* TableViewCellThreeLabel.xib in Resources */,
@@ -430,20 +363,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C5F6A8226248A60090B87B /* DDBarLoader.swift in Sources */,
-				84C5F6952262487F0090B87B /* TableViewCellRegisterList.swift in Sources */,
-				84C5F6A1226248930090B87B /* ListViewModel.swift in Sources */,
 				84C9648E22682139009A255F /* ExtensionsAndConstants.swift in Sources */,
 				84C5F672226247710090B87B /* AppDelegate.swift in Sources */,
 				84C5F6AB226248C00090B87B /* HomeViewController.swift in Sources */,
-				84C5F6A0226248930090B87B /* ListViewController.swift in Sources */,
-				84C5F69F226248930090B87B /* ListModel.swift in Sources */,
 				84C5F6B122666C840090B87B /* DetailViewController.swift in Sources */,
 				84C9649A2268D175009A255F /* ContactListViewModel.swift in Sources */,
 				84C5F6A9226248A60090B87B /* Services.swift in Sources */,
 				84C9649C2268D17F009A255F /* ContactListViewController.swift in Sources */,
 				84C9648B22680EF2009A255F /* DetailViewModel.swift in Sources */,
 				84C964982268D16B009A255F /* ContactListViewModelContract.swift in Sources */,
-				84C5F6A2226248930090B87B /* ListViewModelProtocol.swift in Sources */,
 				84C5F6B52266A4390090B87B /* TableViewCellDetailHeader.swift in Sources */,
 				84C5F6BA22678CD70090B87B /* TableViewCellThreeLabel.swift in Sources */,
 				84C964962268D15E009A255F /* ContactListModel.swift in Sources */,

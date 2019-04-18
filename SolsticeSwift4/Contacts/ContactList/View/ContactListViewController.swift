@@ -169,15 +169,23 @@ extension ContactListViewController {
 
 extension ContactListViewController: DetailViewControllerDelegate {
     func starDidChangedDelegate(_ value: Bool) {
-        //if star state has chaned
+        //this block is executed only if star status has changed from contact detail.
+        
+        //Basically I identify the object in rawList, to change isFavorite property with the new value.
+        
         let index = tableView.indexPathForSelectedRow
         let selectedItem = viewModel?.model?.itemsSections[(index?.section)!][(index?.row)!]
+        
+        //get position
         let position = viewModel?.model?.rawList.index(where: { $0.id == selectedItem?.id })
         
+        //change isFavorite with new value at position
         viewModel?.model?.rawList[position!].isFavorite = value
-        viewModel?.model?.adaptData()
-       
         
+        //update list where other contacts and favorites are separated
+        viewModel?.model?.adaptData()
+        
+        //finally reload table view
         showList()
     }
     
