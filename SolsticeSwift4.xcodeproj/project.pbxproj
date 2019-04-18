@@ -27,6 +27,8 @@
 		84C9649A2268D175009A255F /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964992268D175009A255F /* ContactListViewModel.swift */; };
 		84C9649C2268D17F009A255F /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9649B2268D17F009A255F /* ContactListViewController.swift */; };
 		84C9649F2268D1D2009A255F /* StoryboardContacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */; };
+		84C964A32268E87B009A255F /* TableViewCellRegisterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964A12268E87B009A255F /* TableViewCellRegisterList.swift */; };
+		84C964A62268E8E2009A255F /* TableViewCellRegisterList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C964A52268E8E1009A255F /* TableViewCellRegisterList.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		84C964992268D175009A255F /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
 		84C9649B2268D17F009A255F /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryboardContacts.storyboard; sourceTree = "<group>"; };
+		84C964A12268E87B009A255F /* TableViewCellRegisterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterList.swift; sourceTree = "<group>"; };
+		84C964A52268E8E1009A255F /* TableViewCellRegisterList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellRegisterList.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,7 @@
 		84C964922268D13F009A255F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84C964A42268E880009A255F /* Cells */,
 				84C9649B2268D17F009A255F /* ContactListViewController.swift */,
 			);
 			path = View;
@@ -256,6 +261,15 @@
 				84C5F6AC226649080090B87B /* ContanctDetail */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		84C964A42268E880009A255F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84C964A12268E87B009A255F /* TableViewCellRegisterList.swift */,
+				84C964A52268E8E1009A255F /* TableViewCellRegisterList.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +357,7 @@
 				84C5F6792262477B0090B87B /* Assets.xcassets in Resources */,
 				84C5F6B62266A4390090B87B /* TableViewCellDetailHeader.xib in Resources */,
 				84C5F677226247710090B87B /* Main.storyboard in Resources */,
+				84C964A62268E8E2009A255F /* TableViewCellRegisterList.xib in Resources */,
 				84C5F6BB22678CD70090B87B /* TableViewCellThreeLabel.xib in Resources */,
 				84C9649F2268D1D2009A255F /* StoryboardContacts.storyboard in Resources */,
 			);
@@ -367,6 +382,7 @@
 				84C5F672226247710090B87B /* AppDelegate.swift in Sources */,
 				84C5F6AB226248C00090B87B /* HomeViewController.swift in Sources */,
 				84C5F6B122666C840090B87B /* DetailViewController.swift in Sources */,
+				84C964A32268E87B009A255F /* TableViewCellRegisterList.swift in Sources */,
 				84C9649A2268D175009A255F /* ContactListViewModel.swift in Sources */,
 				84C5F6A9226248A60090B87B /* Services.swift in Sources */,
 				84C9649C2268D17F009A255F /* ContactListViewController.swift in Sources */,
