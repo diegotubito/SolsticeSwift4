@@ -28,6 +28,11 @@
 		84C5F6BB22678CD70090B87B /* TableViewCellThreeLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F6B922678CD70090B87B /* TableViewCellThreeLabel.xib */; };
 		84C9648B22680EF2009A255F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9648A22680EF2009A255F /* DetailViewModel.swift */; };
 		84C9648E22682139009A255F /* ExtensionsAndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9648D22682139009A255F /* ExtensionsAndConstants.swift */; };
+		84C964962268D15E009A255F /* ContactListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964952268D15E009A255F /* ContactListModel.swift */; };
+		84C964982268D16B009A255F /* ContactListViewModelContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964972268D16B009A255F /* ContactListViewModelContract.swift */; };
+		84C9649A2268D175009A255F /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964992268D175009A255F /* ContactListViewModel.swift */; };
+		84C9649C2268D17F009A255F /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9649B2268D17F009A255F /* ContactListViewController.swift */; };
+		84C9649F2268D1D2009A255F /* StoryboardContacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		84C5F6B922678CD70090B87B /* TableViewCellThreeLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCellThreeLabel.xib; sourceTree = "<group>"; };
 		84C9648A22680EF2009A255F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		84C9648D22682139009A255F /* ExtensionsAndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndConstants.swift; sourceTree = "<group>"; };
+		84C964952268D15E009A255F /* ContactListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModel.swift; sourceTree = "<group>"; };
+		84C964972268D16B009A255F /* ContactListViewModelContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModelContract.swift; sourceTree = "<group>"; };
+		84C964992268D175009A255F /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
+		84C9649B2268D17F009A255F /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryboardContacts.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +122,7 @@
 				84C5F675226247710090B87B /* Main.storyboard */,
 				84C9648C2268212A009A255F /* Common */,
 				84C5F6A6226248A60090B87B /* Services */,
-				84C5F697226248930090B87B /* List */,
-				84C5F6AC226649080090B87B /* Details */,
+				84C9649D2268D1B4009A255F /* Contacts */,
 				84C5F6782262477B0090B87B /* Assets.xcassets */,
 				84C5F67A2262477B0090B87B /* LaunchScreen.storyboard */,
 				84C5F67D2262477B0090B87B /* Info.plist */,
@@ -199,13 +208,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		84C5F6AC226649080090B87B /* Details */ = {
+		84C5F6AC226649080090B87B /* ContanctDetail */ = {
 			isa = PBXGroup;
 			children = (
 				84C5F6AE2266491C0090B87B /* ViewModel */,
 				84C5F6AD226649170090B87B /* View */,
 			);
-			path = Details;
+			path = ContanctDetail;
 			sourceTree = "<group>";
 		};
 		84C5F6AD226649170090B87B /* View */ = {
@@ -267,6 +276,52 @@
 				84C5F6B22266A4180090B87B /* HeaderCell */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		84C964912268D116009A255F /* ContactList */ = {
+			isa = PBXGroup;
+			children = (
+				84C964942268D14A009A255F /* Model */,
+				84C964932268D144009A255F /* ViewModel */,
+				84C964922268D13F009A255F /* View */,
+			);
+			path = ContactList;
+			sourceTree = "<group>";
+		};
+		84C964922268D13F009A255F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84C9649B2268D17F009A255F /* ContactListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84C964932268D144009A255F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84C964972268D16B009A255F /* ContactListViewModelContract.swift */,
+				84C964992268D175009A255F /* ContactListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84C964942268D14A009A255F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84C964952268D15E009A255F /* ContactListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84C9649D2268D1B4009A255F /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */,
+				84C964912268D116009A255F /* ContactList */,
+				84C5F697226248930090B87B /* List */,
+				84C5F6AC226649080090B87B /* ContanctDetail */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +411,7 @@
 				84C5F6B62266A4390090B87B /* TableViewCellDetailHeader.xib in Resources */,
 				84C5F677226247710090B87B /* Main.storyboard in Resources */,
 				84C5F6BB22678CD70090B87B /* TableViewCellThreeLabel.xib in Resources */,
+				84C9649F2268D1D2009A255F /* StoryboardContacts.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,11 +438,15 @@
 				84C5F6A0226248930090B87B /* ListViewController.swift in Sources */,
 				84C5F69F226248930090B87B /* ListModel.swift in Sources */,
 				84C5F6B122666C840090B87B /* DetailViewController.swift in Sources */,
+				84C9649A2268D175009A255F /* ContactListViewModel.swift in Sources */,
 				84C5F6A9226248A60090B87B /* Services.swift in Sources */,
+				84C9649C2268D17F009A255F /* ContactListViewController.swift in Sources */,
 				84C9648B22680EF2009A255F /* DetailViewModel.swift in Sources */,
+				84C964982268D16B009A255F /* ContactListViewModelContract.swift in Sources */,
 				84C5F6A2226248930090B87B /* ListViewModelProtocol.swift in Sources */,
 				84C5F6B52266A4390090B87B /* TableViewCellDetailHeader.swift in Sources */,
 				84C5F6BA22678CD70090B87B /* TableViewCellThreeLabel.swift in Sources */,
+				84C964962268D15E009A255F /* ContactListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
