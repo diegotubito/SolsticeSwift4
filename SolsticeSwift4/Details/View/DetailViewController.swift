@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
+protocol DetailViewControllerDelegate: class {
+    func starDidChangedDelegate(_ value: Bool)
+}
+
 class DetailViewController : UIViewController {
-    private var _userInfo : GeneralInfo?
+    
+    weak var delegate : DetailViewControllerDelegate?
+    
     var cells = [UITableViewCell]()
     var headerCell : TableViewCellDetailHeader!
     var homePhoneCell : TableViewCellThreeLabel!
@@ -20,12 +26,13 @@ class DetailViewController : UIViewController {
     var birthdateCell : TableViewCellThreeLabel!
     var emailCell : TableViewCellThreeLabel!
     
-    let height = UIScreen.main.bounds.height
-    let widht = UIScreen.main.bounds.width
+    var viewModel : DetailViewModel!
     
     var starButton : UIBarButtonItem!
     
     @IBOutlet var tableView: UITableView!
+  
+    private var _userInfo : GeneralInfo?
     var userInfo : GeneralInfo? {
         get {
             return _userInfo
@@ -34,41 +41,50 @@ class DetailViewController : UIViewController {
         }
     }
     
+    var oldIsFavorite : Bool!
+    
     override func viewDidLoad() {
         super .viewDidLoad()
         
-        //some init
+        oldIsFavorite = userInfo?.isFavorite
+        
+        viewModel = DetailViewModel()
+        
+        //initialization
         tableViewInit()
         starButtonInit()
-        
+     
         //load cells with selected row
         loadCells()
         
     }
     
-    @objc func starButtonHandler() {
-        print("handle star button")
+    override func viewWillDisappear(_ animated: Bool) {
+        if oldIsFavorite != userInfo?.isFavorite {
+            self.delegate?.starDidChangedDelegate((userInfo?.isFavorite)!)
+        }
     }
     
-    func starButtonInit() {
-        
-        var image = #imageLiteral(resourceName: "Favorite — True").withRenderingMode(.alwaysOriginal)
-        if !(userInfo?.isFavorite)! {
-            image = #imageLiteral(resourceName: "Favorite — False").withRenderingMode(.alwaysOriginal)
-        }
-        starButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(starButtonHandler))
-        navigationItem.rightBarButtonItem = starButton
-        
-    }
     
     func tableViewInit() {
         //autorisizing rows
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = height*0.3
+        tableView.estimatedRowHeight = 40
         
         //register the cell that is going to be used
         tableView.register(TableViewCellDetailHeader.nib, forCellReuseIdentifier: TableViewCellDetailHeader.identifier)
         tableView.register(TableViewCellThreeLabel.nib, forCellReuseIdentifier: TableViewCellThreeLabel.identifier)
+    }
+    
+    func showError(_ value: String) {
+        let alert = UIAlertController.init(title: title, message: value, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+            
+        }))
+        
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func loadCells() {
@@ -82,14 +98,18 @@ class DetailViewController : UIViewController {
         ServiceManager.downloadImageFromUrl(url: (userInfo?.largeImageURL)!, result: { (image) in
             DispatchQueue.main.async {
                 self.headerCell.activityIndicator.stopAnimating()
-                self.headerCell.contactImage.image = image
+                if let newImage = image {
+                    self.headerCell.contactImage.image = newImage
+                } else {
+                    self.headerCell.contactImage.image = #imageLiteral(resourceName: "User Icon Small")
+                }
             }
          }) { (error) in
             DispatchQueue.main.async {
                 self.headerCell.activityIndicator.stopAnimating()
+                self.showError(error?.localizedDescription ?? "unknown error")
             }
-            print("error de algo")
-        }
+         }
         
         cells.append(headerCell)
         
@@ -126,7 +146,7 @@ class DetailViewController : UIViewController {
             addressCell.leftSecondLabel.isHidden = false
             addressCell.rightLabel.isHidden = true
             addressCell.leftLabel.text = address.street
-            addressCell.leftSecondLabel.text = getAddressSecondLabelFormat(address)
+            addressCell.leftSecondLabel.text = viewModel.getAddressSecondLabelFormat(address)
             cells.append(addressCell)
         }
         
@@ -134,7 +154,7 @@ class DetailViewController : UIViewController {
         if let birthdate = userInfo?.birthday {
             birthdateCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellThreeLabel.identifier) as? TableViewCellThreeLabel
             birthdateCell.titleLabel.text = "BIRTHDATE"
-            birthdateCell.leftLabel.text = getBirthdateFormat(birthdate)
+            birthdateCell.leftLabel.text = viewModel.getBirthdateFormat(birthdate)
             birthdateCell.rightLabel.isHidden = true
       
             cells.append(birthdateCell)
@@ -149,37 +169,6 @@ class DetailViewController : UIViewController {
             
             cells.append(emailCell)
         }
-        
-
-    }
-    
-    func getAddressSecondLabelFormat(_ data: GeneralInfo.Address) -> String {
-        var result = String()
-        result.append(data.city ?? "")
-        result.append(", ")
-        result.append(data.state ?? "")
-        result.append(" ")
-        result.append(data.zipCode ?? "")
-        result.append(", ")
-        result.append(data.country ?? "")
-        return result
-    }
-    
-    func getBirthdateFormat(_ value: String) -> String {
-        var result : String = ""
-        if let date = value.toDate(formato: "yyyy-MM-dd") {
-            let month = Calendar.current.component(.month, from: date)
-            let day = Calendar.current.component(.day, from: date)
-            let year = Calendar.current.component(.year, from: date)
-            let monthName = MonthNames[month]
-            result.append(monthName!)
-            result.append(" ")
-            result.append(String(day))
-            result.append(", ")
-            result.append(String(year))
-        }
-        
-        return result
     }
 }
 
@@ -191,11 +180,28 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cells[indexPath.row]
     }
-    
-    
 }
 
 
-extension DetailViewController: UITableViewDelegate {
+//starButton methods
+extension DetailViewController {
+    func starButtonInit() {
+        starButton = UIBarButtonItem(image: getStarImage(), style: .plain, target: self, action: #selector(starButtonHandler))
+        navigationItem.rightBarButtonItem = starButton
+        
+    }
     
+    func getStarImage() -> UIImage {
+        var image = #imageLiteral(resourceName: "Favorite — True").withRenderingMode(.alwaysOriginal)
+        if !(userInfo?.isFavorite)! {
+            image = #imageLiteral(resourceName: "Favorite — False").withRenderingMode(.alwaysOriginal)
+        }
+        
+        return image
+    }
+    
+    @objc func starButtonHandler() {
+        userInfo?.isFavorite?.toggle()
+        starButton.image = getStarImage()
+    }
 }

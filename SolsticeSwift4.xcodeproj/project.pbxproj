@@ -26,6 +26,8 @@
 		84C5F6B62266A4390090B87B /* TableViewCellDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F6B42266A4390090B87B /* TableViewCellDetailHeader.xib */; };
 		84C5F6BA22678CD70090B87B /* TableViewCellThreeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F6B822678CD70090B87B /* TableViewCellThreeLabel.swift */; };
 		84C5F6BB22678CD70090B87B /* TableViewCellThreeLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F6B922678CD70090B87B /* TableViewCellThreeLabel.xib */; };
+		84C9648B22680EF2009A255F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9648A22680EF2009A255F /* DetailViewModel.swift */; };
+		84C9648E22682139009A255F /* ExtensionsAndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9648D22682139009A255F /* ExtensionsAndConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		84C5F6B42266A4390090B87B /* TableViewCellDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCellDetailHeader.xib; sourceTree = "<group>"; };
 		84C5F6B822678CD70090B87B /* TableViewCellThreeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellThreeLabel.swift; sourceTree = "<group>"; };
 		84C5F6B922678CD70090B87B /* TableViewCellThreeLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCellThreeLabel.xib; sourceTree = "<group>"; };
+		84C9648A22680EF2009A255F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		84C9648D22682139009A255F /* ExtensionsAndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,11 +110,10 @@
 				84C5F671226247710090B87B /* AppDelegate.swift */,
 				84C5F6AA226248C00090B87B /* HomeViewController.swift */,
 				84C5F675226247710090B87B /* Main.storyboard */,
-				84C5F6A3226248A50090B87B /* MyCustomViews */,
+				84C9648C2268212A009A255F /* Common */,
 				84C5F6A6226248A60090B87B /* Services */,
 				84C5F697226248930090B87B /* List */,
 				84C5F6AC226649080090B87B /* Details */,
-				84C5F6912262487F0090B87B /* CommonCells */,
 				84C5F6782262477B0090B87B /* Assets.xcassets */,
 				84C5F67A2262477B0090B87B /* LaunchScreen.storyboard */,
 				84C5F67D2262477B0090B87B /* Info.plist */,
@@ -127,16 +130,6 @@
 			path = SolsticeSwift4Tests;
 			sourceTree = "<group>";
 		};
-		84C5F6912262487F0090B87B /* CommonCells */ = {
-			isa = PBXGroup;
-			children = (
-				84C5F6B722678C8E0090B87B /* ThreeLabelCell */,
-				84C5F6B22266A4180090B87B /* CellHeader */,
-				84C5F6922262487F0090B87B /* RegisterCell */,
-			);
-			path = CommonCells;
-			sourceTree = "<group>";
-		};
 		84C5F6922262487F0090B87B /* RegisterCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				84C5F698226248930090B87B /* Model */,
-				84C5F69A226248930090B87B /* View */,
 				84C5F69C226248930090B87B /* ViewModel */,
+				84C5F69A226248930090B87B /* View */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -167,6 +160,7 @@
 		84C5F69A226248930090B87B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84C9648F2268230D009A255F /* Cells */,
 				84C5F69B226248930090B87B /* ListViewController.swift */,
 			);
 			path = View;
@@ -208,7 +202,6 @@
 		84C5F6AC226649080090B87B /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				84C5F6AF226649220090B87B /* Model */,
 				84C5F6AE2266491C0090B87B /* ViewModel */,
 				84C5F6AD226649170090B87B /* View */,
 			);
@@ -218,6 +211,7 @@
 		84C5F6AD226649170090B87B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84C964902268231B009A255F /* Cells */,
 				84C5F6B022666C840090B87B /* DetailViewController.swift */,
 			);
 			path = View;
@@ -226,24 +220,18 @@
 		84C5F6AE2266491C0090B87B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				84C9648A22680EF2009A255F /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		84C5F6AF226649220090B87B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		84C5F6B22266A4180090B87B /* CellHeader */ = {
+		84C5F6B22266A4180090B87B /* HeaderCell */ = {
 			isa = PBXGroup;
 			children = (
 				84C5F6B32266A4390090B87B /* TableViewCellDetailHeader.swift */,
 				84C5F6B42266A4390090B87B /* TableViewCellDetailHeader.xib */,
 			);
-			path = CellHeader;
+			path = HeaderCell;
 			sourceTree = "<group>";
 		};
 		84C5F6B722678C8E0090B87B /* ThreeLabelCell */ = {
@@ -253,6 +241,32 @@
 				84C5F6B922678CD70090B87B /* TableViewCellThreeLabel.xib */,
 			);
 			path = ThreeLabelCell;
+			sourceTree = "<group>";
+		};
+		84C9648C2268212A009A255F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84C9648D22682139009A255F /* ExtensionsAndConstants.swift */,
+				84C5F6A3226248A50090B87B /* MyCustomViews */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		84C9648F2268230D009A255F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84C5F6922262487F0090B87B /* RegisterCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		84C964902268231B009A255F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84C5F6B722678C8E0090B87B /* ThreeLabelCell */,
+				84C5F6B22266A4180090B87B /* HeaderCell */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,12 +376,14 @@
 				84C5F6A8226248A60090B87B /* DDBarLoader.swift in Sources */,
 				84C5F6952262487F0090B87B /* TableViewCellRegisterList.swift in Sources */,
 				84C5F6A1226248930090B87B /* ListViewModel.swift in Sources */,
+				84C9648E22682139009A255F /* ExtensionsAndConstants.swift in Sources */,
 				84C5F672226247710090B87B /* AppDelegate.swift in Sources */,
 				84C5F6AB226248C00090B87B /* HomeViewController.swift in Sources */,
 				84C5F6A0226248930090B87B /* ListViewController.swift in Sources */,
 				84C5F69F226248930090B87B /* ListModel.swift in Sources */,
 				84C5F6B122666C840090B87B /* DetailViewController.swift in Sources */,
 				84C5F6A9226248A60090B87B /* Services.swift in Sources */,
+				84C9648B22680EF2009A255F /* DetailViewModel.swift in Sources */,
 				84C5F6A2226248930090B87B /* ListViewModelProtocol.swift in Sources */,
 				84C5F6B52266A4390090B87B /* TableViewCellDetailHeader.swift in Sources */,
 				84C5F6BA22678CD70090B87B /* TableViewCellThreeLabel.swift in Sources */,
