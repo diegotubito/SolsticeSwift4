@@ -14,6 +14,7 @@ protocol DetailViewControllerDelegate: class {
 }
 
 class DetailViewController : UIViewController {
+   
     
     weak var delegate : DetailViewControllerDelegate?
     
@@ -26,42 +27,29 @@ class DetailViewController : UIViewController {
     var birthdateCell : TableViewCellThreeLabel!
     var emailCell : TableViewCellThreeLabel!
     
-    var viewModel : DetailViewModel!
+    var viewModel : DetailViewModelProtocol!
     
     var starButton : UIBarButtonItem!
-    
+
     @IBOutlet var tableView: UITableView!
-  
-    private var _userInfo : GeneralInfo?
-    var userInfo : GeneralInfo? {
-        get {
-            return _userInfo
-        } set {
-            _userInfo = newValue
-        }
-    }
-    
-    var oldIsFavorite : Bool!
-    
+   
+     
     override func viewDidLoad() {
         super .viewDidLoad()
-        
-        oldIsFavorite = userInfo?.isFavorite
-        
-        viewModel = DetailViewModel()
         
         //initialization
         tableViewInit()
         starButtonInit()
      
-        //load cells with selected row
+        //load cells with selected contact information
         loadCells()
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if oldIsFavorite != userInfo?.isFavorite {
-            self.delegate?.starDidChangedDelegate((userInfo?.isFavorite)!)
+        //when return to contact list view, if favorite status had changed then it runs delegete protocol method
+        if viewModel.isFavoriteDifferent() {
+            self.delegate?.starDidChangedDelegate(viewModel.getCurrentIsFavorite())
         }
     }
     
@@ -76,77 +64,56 @@ class DetailViewController : UIViewController {
         tableView.register(TableViewCellThreeLabel.nib, forCellReuseIdentifier: TableViewCellThreeLabel.identifier)
     }
     
-    func showError(_ value: String) {
-        let alert = UIAlertController.init(title: title, message: value, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
-            
-        }))
-        
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+   
     
     func loadCells() {
+        let userInfo : GeneralInfo? = viewModel.getReceivedContact()
+        
         //Header cell
         headerCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellDetailHeader.identifier) as? TableViewCellDetailHeader
         headerCell.title.text = userInfo?.name
         headerCell.subTitle.text = userInfo?.companyName
         
-        
-        headerCell.activityIndicator.startAnimating()
-        ServiceManager.downloadImageFromUrl(url: (userInfo?.largeImageURL)!, result: { (image) in
-            DispatchQueue.main.async {
-                self.headerCell.activityIndicator.stopAnimating()
-                if let newImage = image {
-                    self.headerCell.contactImage.image = newImage
-                } else {
-                    self.headerCell.contactImage.image = #imageLiteral(resourceName: "User Icon Small")
-                }
-            }
-         }) { (error) in
-            DispatchQueue.main.async {
-                self.headerCell.activityIndicator.stopAnimating()
-                self.showError(error?.localizedDescription ?? "unknown error")
-            }
-         }
-        
+        //load image in background
+        viewModel.loadBigPicture { (image) in
+            self.headerCell.contactImage.image = image
+        }
         cells.append(headerCell)
         
         //Home Phone Cell
-        if let phone = userInfo?.phone, let home = phone.home {
+        if let phone = userInfo?.phone, let home = phone.home, home != "" {
             homePhoneCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellThreeLabel.identifier) as? TableViewCellThreeLabel
             homePhoneCell.titleLabel.text = "PHONE"
-            homePhoneCell.leftLabel.text = home
+            homePhoneCell.leftLabel.text = viewModel.getPhoneFormat(home)
             homePhoneCell.rightLabel.text = "Home"
             cells.append(homePhoneCell)
         }
         //Mobile Phone Cell
-        if let phone = userInfo?.phone, let mobile = phone.mobile {
+        if let phone = userInfo?.phone, let mobile = phone.mobile, mobile != "" {
             mobilePhoneCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellThreeLabel.identifier) as? TableViewCellThreeLabel
             mobilePhoneCell.titleLabel.text = "PHONE"
-            mobilePhoneCell.leftLabel.text = mobile
+            mobilePhoneCell.leftLabel.text = viewModel.getPhoneFormat(mobile)
             mobilePhoneCell.rightLabel.text = "Mobile"
             cells.append(mobilePhoneCell)
         }
         
         //Work Phone Cell
-        if let phone = userInfo?.phone, let mobile = phone.work {
+        if let phone = userInfo?.phone, let work = phone.work, work != "" {
             workPhoneCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellThreeLabel.identifier) as? TableViewCellThreeLabel
             workPhoneCell.titleLabel.text = "PHONE"
-            workPhoneCell.leftLabel.text = mobile
+            workPhoneCell.leftLabel.text = viewModel.getPhoneFormat(work)
             workPhoneCell.rightLabel.text = "Work"
             cells.append(workPhoneCell)
         }
         
         //Address Cell
-        if let address = userInfo?.address {
+        if let address = userInfo?.address, let displayAddress = viewModel.getAddressSecondLabelFormat(address) {
             addressCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellThreeLabel.identifier) as? TableViewCellThreeLabel
             addressCell.titleLabel.text = "ADDRESS"
             addressCell.leftSecondLabel.isHidden = false
             addressCell.rightLabel.isHidden = true
             addressCell.leftLabel.text = address.street
-            addressCell.leftSecondLabel.text = viewModel.getAddressSecondLabelFormat(address)
+            addressCell.leftSecondLabel.text = displayAddress
             cells.append(addressCell)
         }
         
@@ -170,6 +137,9 @@ class DetailViewController : UIViewController {
             cells.append(emailCell)
         }
     }
+    
+   
+    
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -191,17 +161,46 @@ extension DetailViewController {
         
     }
     
+    @objc func starButtonHandler() {
+        viewModel.toggleIsFavorite()
+        starButton.image = getStarImage()
+    }
+    
     func getStarImage() -> UIImage {
+        let isFavorite = viewModel.getCurrentIsFavorite()
+        
         var image = #imageLiteral(resourceName: "Favorite — True").withRenderingMode(.alwaysOriginal)
-        if !(userInfo?.isFavorite)! {
+        if !isFavorite {
             image = #imageLiteral(resourceName: "Favorite — False").withRenderingMode(.alwaysOriginal)
         }
         
         return image
     }
     
-    @objc func starButtonHandler() {
-        userInfo?.isFavorite?.toggle()
-        starButton.image = getStarImage()
+}
+
+
+extension DetailViewController: DetailViewProtocol {
+    func showLoading() {
+        DispatchQueue.main.async {
+            self.headerCell.activityIndicator.startAnimating()
+        }
+    }
+    
+    func hideLoading() {
+        DispatchQueue.main.async {
+            self.headerCell.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func showError(_ value: String) {
+        let alert = UIAlertController.init(title: title, message: value, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+            
+        }))
+        
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

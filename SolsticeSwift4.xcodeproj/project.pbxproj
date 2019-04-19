@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8484BBB4226932A400C20E40 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB3226932A400C20E40 /* ServiceProtocol.swift */; };
+		8484BBB72269332C00C20E40 /* MockServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB62269332C00C20E40 /* MockServiceManager.swift */; };
+		8484BBB922693B4300C20E40 /* TestServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB822693B4300C20E40 /* TestServiceManager.swift */; };
+		8484BBBC226941F900C20E40 /* ContactDetalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBBB226941F900C20E40 /* ContactDetalModel.swift */; };
+		8484BBBE2269424700C20E40 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBBD2269424700C20E40 /* DetailViewModelProtocol.swift */; };
 		84C5F672226247710090B87B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F671226247710090B87B /* AppDelegate.swift */; };
 		84C5F677226247710090B87B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F675226247710090B87B /* Main.storyboard */; };
 		84C5F6792262477B0090B87B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C5F6782262477B0090B87B /* Assets.xcassets */; };
@@ -29,6 +34,8 @@
 		84C9649F2268D1D2009A255F /* StoryboardContacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */; };
 		84C964A32268E87B009A255F /* TableViewCellRegisterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964A12268E87B009A255F /* TableViewCellRegisterList.swift */; };
 		84C964A62268E8E2009A255F /* TableViewCellRegisterList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C964A52268E8E1009A255F /* TableViewCellRegisterList.xib */; };
+		84C964A82268FC99009A255F /* basicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964A72268FC99009A255F /* basicAnimation.swift */; };
+		84C964AA2269219B009A255F /* TestDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C964A92269219B009A255F /* TestDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8484BBB3226932A400C20E40 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		8484BBB62269332C00C20E40 /* MockServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceManager.swift; sourceTree = "<group>"; };
+		8484BBB822693B4300C20E40 /* TestServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServiceManager.swift; sourceTree = "<group>"; };
+		8484BBBB226941F900C20E40 /* ContactDetalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetalModel.swift; sourceTree = "<group>"; };
+		8484BBBD2269424700C20E40 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		84C5F66E226247710090B87B /* SolsticeSwift4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolsticeSwift4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C5F671226247710090B87B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C5F676226247710090B87B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,6 +80,8 @@
 		84C9649E2268D1D2009A255F /* StoryboardContacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryboardContacts.storyboard; sourceTree = "<group>"; };
 		84C964A12268E87B009A255F /* TableViewCellRegisterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellRegisterList.swift; sourceTree = "<group>"; };
 		84C964A52268E8E1009A255F /* TableViewCellRegisterList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellRegisterList.xib; sourceTree = "<group>"; };
+		84C964A72268FC99009A255F /* basicAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basicAnimation.swift; sourceTree = "<group>"; };
+		84C964A92269219B009A255F /* TestDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +102,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8484BBB52269330800C20E40 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8484BBB62269332C00C20E40 /* MockServiceManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		8484BBBA226941E800C20E40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8484BBBB226941F900C20E40 /* ContactDetalModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8484BBBF226A281500C20E40 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				8484BBB822693B4300C20E40 /* TestServiceManager.swift */,
+				8484BBB52269330800C20E40 /* Mocks */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
 		84C5F665226247710090B87B = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +164,9 @@
 		84C5F6852262477B0090B87B /* SolsticeSwift4Tests */ = {
 			isa = PBXGroup;
 			children = (
+				8484BBBF226A281500C20E40 /* APIClient */,
 				84C5F6862262477B0090B87B /* SolsticeSwift4Tests.swift */,
+				84C964A92269219B009A255F /* TestDetailViewModel.swift */,
 				84C5F6882262477B0090B87B /* Info.plist */,
 			);
 			path = SolsticeSwift4Tests;
@@ -151,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				84C5F6A7226248A60090B87B /* Services.swift */,
+				8484BBB3226932A400C20E40 /* ServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -158,6 +200,7 @@
 		84C5F6AC226649080090B87B /* ContanctDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8484BBBA226941E800C20E40 /* Model */,
 				84C5F6AE2266491C0090B87B /* ViewModel */,
 				84C5F6AD226649170090B87B /* View */,
 			);
@@ -177,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				84C9648A22680EF2009A255F /* DetailViewModel.swift */,
+				8484BBBD2269424700C20E40 /* DetailViewModelProtocol.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -204,6 +248,7 @@
 			children = (
 				84C9648D22682139009A255F /* ExtensionsAndConstants.swift */,
 				84C5F6A3226248A50090B87B /* MyCustomViews */,
+				84C964A72268FC99009A255F /* basicAnimation.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -379,8 +424,12 @@
 			files = (
 				84C5F6A8226248A60090B87B /* DDBarLoader.swift in Sources */,
 				84C9648E22682139009A255F /* ExtensionsAndConstants.swift in Sources */,
+				8484BBBC226941F900C20E40 /* ContactDetalModel.swift in Sources */,
+				84C964A82268FC99009A255F /* basicAnimation.swift in Sources */,
+				8484BBB4226932A400C20E40 /* ServiceProtocol.swift in Sources */,
 				84C5F672226247710090B87B /* AppDelegate.swift in Sources */,
 				84C5F6AB226248C00090B87B /* HomeViewController.swift in Sources */,
+				8484BBBE2269424700C20E40 /* DetailViewModelProtocol.swift in Sources */,
 				84C5F6B122666C840090B87B /* DetailViewController.swift in Sources */,
 				84C964A32268E87B009A255F /* TableViewCellRegisterList.swift in Sources */,
 				84C9649A2268D175009A255F /* ContactListViewModel.swift in Sources */,
@@ -399,6 +448,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C5F6872262477B0090B87B /* SolsticeSwift4Tests.swift in Sources */,
+				84C964AA2269219B009A255F /* TestDetailViewModel.swift in Sources */,
+				8484BBB72269332C00C20E40 /* MockServiceManager.swift in Sources */,
+				8484BBB922693B4300C20E40 /* TestServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

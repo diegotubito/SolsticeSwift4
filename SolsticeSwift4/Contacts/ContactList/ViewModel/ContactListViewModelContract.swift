@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol ContactListViewModelProtocol {
-    init (withView view: ContactListViewProtocol)
+    init (withView view: ContactListViewProtocol, interactor: ServiceManagerProtocol)
     var model : ContactListModel? {get}
     func loadData()
     func loadImage(_ url: String, success:  @escaping (UIImage?) -> Void, fail:  @escaping (String) -> Void)

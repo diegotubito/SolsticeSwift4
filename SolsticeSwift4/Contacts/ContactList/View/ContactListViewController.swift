@@ -136,7 +136,6 @@ extension ContactListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel?.model?.itemSectionTitle[section]
     }
-    
 }
 
 
@@ -157,11 +156,9 @@ extension ContactListViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super .prepare(for: segue, sender: nil)
         
-        if let controller = segue.destination as? DetailViewController {
+        if let controller = segue.destination as? DetailViewController, let object = sender as? GeneralInfo {
             controller.delegate = self
-            if let object = sender as? GeneralInfo {
-                controller.userInfo = object
-            }
+            controller.viewModel = DetailViewModel(withView: controller, interactor: ServiceManager(), senderObject: object)
         }
     }
 }

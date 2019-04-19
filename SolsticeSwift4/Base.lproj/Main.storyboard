@@ -18,29 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-Ih-v6C">
-                                <rect key="frame" x="148" y="424.5" width="118" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Start Test"/>
-                                <connections>
-                                    <action selector="startTestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO4-ux-gk1"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ai6-av-BMD">
-                                <rect key="frame" x="197" y="173" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="gFh-rU-aOv">
+                                <rect key="frame" x="62" y="384" width="290" height="128.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLSTICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="9lq-ta-rrc">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="75.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="63"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-Ih-v6C">
+                                        <rect key="frame" x="0.0" y="81.5" width="290" height="47"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <state key="normal" title="Start Test"/>
+                                        <connections>
+                                            <action selector="startTestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO4-ux-gk1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9lq-ta-rrc" secondAttribute="trailing" id="1RS-D4-UxC"/>
+                                    <constraint firstAttribute="trailing" secondItem="lzW-Ih-v6C" secondAttribute="trailing" id="ElK-4g-dAD"/>
+                                    <constraint firstItem="lzW-Ih-v6C" firstAttribute="leading" secondItem="gFh-rU-aOv" secondAttribute="leading" id="Qbd-33-leh"/>
+                                    <constraint firstItem="9lq-ta-rrc" firstAttribute="leading" secondItem="gFh-rU-aOv" secondAttribute="leading" id="VqO-F4-LM7"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lzW-Ih-v6C" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R49-eq-okS"/>
-                            <constraint firstItem="lzW-Ih-v6C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R5y-DO-mWQ"/>
+                            <constraint firstItem="gFh-rU-aOv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8M4-an-C95"/>
+                            <constraint firstItem="gFh-rU-aOv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="gP8-oW-vzz"/>
+                            <constraint firstItem="gFh-rU-aOv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vzq-Ik-zwf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="pqR-VD-Ued"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="ai6-av-BMD" id="8gg-EM-PeV"/>
+                        <outlet property="subTitle" destination="lzW-Ih-v6C" id="8n0-9V-J67"/>
+                        <outlet property="titleLabel" destination="9lq-ta-rrc" id="jFh-jM-QNq"/>
                         <segue destination="OpP-4z-Ybq" kind="show" identifier="segue_to_list" id="Bgu-ld-V4G"/>
                     </connections>
                 </viewController>

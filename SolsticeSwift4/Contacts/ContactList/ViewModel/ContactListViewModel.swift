@@ -11,11 +11,12 @@ import UIKit
 
 class ContactListViewModel: ContactListViewModelProtocol {
     var _view : ContactListViewProtocol!
+    var _interactor : ServiceManagerProtocol!
     var model: ContactListModel?
     
-    required init(withView view: ContactListViewProtocol) {
+    required init(withView view: ContactListViewProtocol, interactor: ServiceManagerProtocol) {
         _view = view
-    
+        _interactor = interactor
     }
     
     func loadData() {
@@ -23,29 +24,35 @@ class ContactListViewModel: ContactListViewModelProtocol {
         _view.showLoading()
         
         //load data from endpoint "https://s3.amazonaws.com/technical-challenge/v3/contacts.json"
-        ServiceManager.retrieveData(onSuccess: { (response) in
-            //success, load model and show data in table view
-            
+        let endPoint = "https://s3.amazonaws.com/technical-challenge/v3/contacts.json"
+        
+        _interactor.retrieveData(url: endPoint) { (data, error) in
             //hide loading animation
             self._view.hideLoading()
             
-            //save data to model
-            self.model = ContactListModel(data: response)
+            guard let json = data else {
+                self._view.showError(error?.localizedDescription ?? "unkown error")
+                return
+            }
             
-            //show all register in table view
-            self._view.showList()
-            
-        }) { (error) in
-            //hide loading animation
-            self._view.hideLoading()
-            
-            //show and error message
-            self._view.showError(error.localizedDescription)
+            do {
+                let array = try JSONDecoder().decode([GeneralInfo].self, from: json)
+         
+                //save data to model
+                self.model = ContactListModel(data: array)
+               
+                //show all register in table view
+                self._view.showList()
+ 
+            } catch{
+                self._view.showError(error.localizedDescription)
+            }
         }
+        
     }
     
     func loadImage(_ url: String, success: @escaping (UIImage?) -> Void, fail: @escaping (String) -> Void) {
-        ServiceManager.downloadImageFromUrl(url: url, result: { (image) in
+        _interactor.downloadImageFromUrl(url: url, result: { (image) in
             success(image)
         }) { (err) in
             fail(err?.localizedDescription ?? "Error")
