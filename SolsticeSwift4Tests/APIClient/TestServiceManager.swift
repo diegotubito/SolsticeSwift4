@@ -35,9 +35,10 @@ class TestServiceManager: XCTestCase {
             }
             
             do {
-                let jsonData = try JSONSerialization.jsonObject(with: json, options: []) as? [[String : Any]]
+                let array = try JSONDecoder().decode([GeneralInfo].self, from: json)
+                
                 //save data to model
-                let model = ContactListModel(data: jsonData!)
+                let model = ContactListModel(data: array)
                 XCTAssertNotNil(model?.itemsSections)
             
                 expectation.fulfill()
