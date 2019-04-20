@@ -10,20 +10,19 @@ import Foundation
 import UIKit
 
 class ContactListModel {
-    var itemsSections = [[GeneralInfo]]()
+    var itemsSections = [[ContactData]]()
     var itemSectionTitle = ["FAVORITE CONTACTS", "OTHER CONTACTS"]
+    var contactList = [ContactData]()
     
-    var rawList = [GeneralInfo]()
-    
-    init?(data: [GeneralInfo]) {
-        self.rawList = data
-        adaptData()
+    init?(data: [ContactData]) {
+        self.contactList = data
+        groupByFavoritism()
     }
 
-    func adaptData() {
-        var favorites = [GeneralInfo]()
-        var nonFavorites = [GeneralInfo]()
-        rawList.forEach { (contact) in
+    func groupByFavoritism() {
+        var favorites = [ContactData]()
+        var nonFavorites = [ContactData]()
+        contactList.forEach { (contact) in
             contact.isFavorite ?? false ? favorites.append(contact) : nonFavorites.append(contact)
         }
         favorites = favorites.sorted(by: { $0.name! < $1.name! })
@@ -35,7 +34,7 @@ class ContactListModel {
     }
 }
 
-struct GeneralInfo: Decodable {
+struct ContactData: Decodable {
     var name : String?
     var id : String?
     var companyName : String?

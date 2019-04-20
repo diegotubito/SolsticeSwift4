@@ -88,7 +88,7 @@ extension ContactListViewController : UITableViewDataSource {
     }
     
     
-    func showCell(cell: TableViewCellRegisterList, rowData: GeneralInfo, index: Int) {
+    func showCell(cell: TableViewCellRegisterList, rowData: ContactData, index: Int) {
         cell.nameCell.text = rowData.name
         cell.companyNameCell.text = rowData.companyName
         
@@ -143,10 +143,9 @@ extension ContactListViewController : UITableViewDataSource {
 extension ContactListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
-        let selectedRowData : GeneralInfo?
-        selectedRowData = viewModel?.model?.itemsSections[indexPath.section][indexPath.row]
-        
-        performSegue(withIdentifier: "segue_to_detail", sender: selectedRowData)
+        let selectedContact : ContactData?
+        selectedContact = viewModel?.model?.itemsSections[indexPath.section][indexPath.row]
+        performSegue(withIdentifier: "segue_to_detail", sender: selectedContact)
     }
     
 }
@@ -156,7 +155,7 @@ extension ContactListViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super .prepare(for: segue, sender: nil)
         
-        if let controller = segue.destination as? DetailViewController, let object = sender as? GeneralInfo {
+        if let controller = segue.destination as? ContactDetailViewController, let object = sender as? ContactData {
             controller.delegate = self
             controller.viewModel = DetailViewModel(withView: controller, interactor: ServiceManager(), senderObject: object)
         }
@@ -164,7 +163,7 @@ extension ContactListViewController {
 }
 
 
-extension ContactListViewController: DetailViewControllerDelegate {
+extension ContactListViewController: ContactDetailViewControllerDelegate {
     func starDidChangedDelegate(_ value: Bool) {
         //this block is executed only if star status has changed from contact detail.
         
@@ -174,13 +173,13 @@ extension ContactListViewController: DetailViewControllerDelegate {
         let selectedItem = viewModel?.model?.itemsSections[(index?.section)!][(index?.row)!]
         
         //get position
-        let position = viewModel?.model?.rawList.index(where: { $0.id == selectedItem?.id })
+        let position = viewModel?.model?.contactList.index(where: { $0.id == selectedItem?.id })
         
         //change isFavorite with new value at position
-        viewModel?.model?.rawList[position!].isFavorite = value
+        viewModel?.model?.contactList[position!].isFavorite = value
         
         //update list where other contacts and favorites are separated
-        viewModel?.model?.adaptData()
+        viewModel?.model?.groupByFavoritism()
         
         //finally reload table view
         showList()

@@ -15,13 +15,13 @@ class DetailViewModel: DetailViewModelProtocol {
     
     var _view : DetailViewProtocol!
     var _interactor : ServiceManagerProtocol!
-    var model : DetailModel!
+    var model : ContactDetailModel!
     
-    required init(withView view: DetailViewProtocol, interactor: ServiceManagerProtocol, senderObject: GeneralInfo) {
+    required init(withView view: DetailViewProtocol, interactor: ServiceManagerProtocol, senderObject: ContactData) {
         _view = view
         _interactor = interactor
         
-        model = DetailModel(contactReceived: senderObject)
+        model = ContactDetailModel(receivedContact: senderObject)
     }
     
     init() {
@@ -30,7 +30,7 @@ class DetailViewModel: DetailViewModelProtocol {
     
     func loadBigPicture(response: @escaping (UIImage) -> Void) {
         _view.showLoading()
-        _interactor.downloadImageFromUrl(url: model.contactReceived.largeImageURL!, result: { (image) in
+        _interactor.downloadImageFromUrl(url: model.receivedContact.largeImageURL!, result: { (image) in
             self._view.hideLoading()
             
             DispatchQueue.main.async {
@@ -65,7 +65,7 @@ class DetailViewModel: DetailViewModelProtocol {
         return result
     }
    
-    func getAddressSecondLabelFormat(_ data: GeneralInfo.Address) -> String? {
+    func getAddressSecondLabelFormat(_ data: ContactData.Address) -> String? {
         var result = String()
         result.append(data.city ?? "")
         result.append(", ")
@@ -98,27 +98,27 @@ class DetailViewModel: DetailViewModelProtocol {
         return result
     }
     
-    func getReceivedContact() -> GeneralInfo {
-        return model.contactReceived
+    func getReceivedContact() -> ContactData {
+        return model.receivedContact
     }
     
-    func getOldIsFavorite() -> Bool {
-        return model.oldIsFavorite!
+    func getIsFavorite_oldValue() -> Bool {
+        return model.isFavorite_oldValue!
     }
     
-    func getCurrentIsFavorite() -> Bool {
-        return (model.contactReceived.isFavorite)!
+    func getIsFavorite_currentValue() -> Bool {
+        return (model.receivedContact.isFavorite)!
     }
     
     func toggleIsFavorite() {
        
-        (model.contactReceived.isFavorite)!.toggle()
+        (model.receivedContact.isFavorite)!.toggle()
     }
     
     func isFavoriteDifferent() -> Bool {
-        let currentValue = model.contactReceived.isFavorite
+        let currentValue = model.receivedContact.isFavorite
         
-        if model.oldIsFavorite != currentValue {
+        if model.isFavorite_oldValue != currentValue {
             return true
         }
         return false

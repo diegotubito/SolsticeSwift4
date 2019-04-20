@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-protocol DetailViewControllerDelegate: class {
+protocol ContactDetailViewControllerDelegate: class {
     func starDidChangedDelegate(_ value: Bool)
 }
 
-class DetailViewController : UIViewController {
+class ContactDetailViewController : UIViewController {
    
     
-    weak var delegate : DetailViewControllerDelegate?
+    weak var delegate : ContactDetailViewControllerDelegate?
     
     var cells = [UITableViewCell]()
     var headerCell : TableViewCellDetailHeader!
@@ -49,7 +49,7 @@ class DetailViewController : UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         //when return to contact list view, if favorite status had changed then it runs delegete protocol method
         if viewModel.isFavoriteDifferent() {
-            self.delegate?.starDidChangedDelegate(viewModel.getCurrentIsFavorite())
+            self.delegate?.starDidChangedDelegate(viewModel.getIsFavorite_currentValue())
         }
     }
     
@@ -67,7 +67,7 @@ class DetailViewController : UIViewController {
    
     
     func loadCells() {
-        let userInfo : GeneralInfo? = viewModel.getReceivedContact()
+        let userInfo : ContactData? = viewModel.getReceivedContact()
         
         //Header cell
         headerCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellDetailHeader.identifier) as? TableViewCellDetailHeader
@@ -142,7 +142,7 @@ class DetailViewController : UIViewController {
     
 }
 
-extension DetailViewController: UITableViewDataSource {
+extension ContactDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
     }
@@ -154,7 +154,7 @@ extension DetailViewController: UITableViewDataSource {
 
 
 //starButton methods
-extension DetailViewController {
+extension ContactDetailViewController {
     func starButtonInit() {
         starButton = UIBarButtonItem(image: getStarImage(), style: .plain, target: self, action: #selector(starButtonHandler))
         navigationItem.rightBarButtonItem = starButton
@@ -167,7 +167,7 @@ extension DetailViewController {
     }
     
     func getStarImage() -> UIImage {
-        let isFavorite = viewModel.getCurrentIsFavorite()
+        let isFavorite = viewModel.getIsFavorite_currentValue()
         
         var image = #imageLiteral(resourceName: "Favorite — True").withRenderingMode(.alwaysOriginal)
         if !isFavorite {
@@ -180,7 +180,7 @@ extension DetailViewController {
 }
 
 
-extension DetailViewController: DetailViewProtocol {
+extension ContactDetailViewController: DetailViewProtocol {
     func showLoading() {
         DispatchQueue.main.async {
             self.headerCell.activityIndicator.startAnimating()
@@ -199,7 +199,6 @@ extension DetailViewController: DetailViewProtocol {
         alert.addAction(UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
             
         }))
-        
         
         self.present(alert, animated: true, completion: nil)
     }

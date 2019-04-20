@@ -16,7 +16,7 @@
 		8484BBEB226A864700C20E40 /* ContactDetalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBEA226A864700C20E40 /* ContactDetalModel.swift */; };
 		8484BBEE226A865400C20E40 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBEC226A865400C20E40 /* DetailViewModel.swift */; };
 		8484BBEF226A865400C20E40 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBED226A865400C20E40 /* DetailViewModelProtocol.swift */; };
-		8484BBF1226A866600C20E40 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBF0226A866600C20E40 /* DetailViewController.swift */; };
+		8484BBF1226A866600C20E40 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBF0226A866600C20E40 /* ContactDetailViewController.swift */; };
 		8484BBF4226A867400C20E40 /* TableViewCellThreeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBF2226A867400C20E40 /* TableViewCellThreeLabel.swift */; };
 		8484BBF5226A867400C20E40 /* TableViewCellThreeLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8484BBF3226A867400C20E40 /* TableViewCellThreeLabel.xib */; };
 		8484BBF8226A868500C20E40 /* TableViewCellDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8484BBF6226A868500C20E40 /* TableViewCellDetailHeader.xib */; };
@@ -58,7 +58,7 @@
 		8484BBEA226A864700C20E40 /* ContactDetalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetalModel.swift; sourceTree = "<group>"; };
 		8484BBEC226A865400C20E40 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		8484BBED226A865400C20E40 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
-		8484BBF0226A866600C20E40 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = SolsticeSwift4/Contacts/ContanctDetail/View/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		8484BBF0226A866600C20E40 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactDetailViewController.swift; path = SolsticeSwift4/Contacts/ContanctDetail/View/ContactDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		8484BBF2226A867400C20E40 /* TableViewCellThreeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellThreeLabel.swift; sourceTree = "<group>"; };
 		8484BBF3226A867400C20E40 /* TableViewCellThreeLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellThreeLabel.xib; sourceTree = "<group>"; };
 		8484BBF6226A868500C20E40 /* TableViewCellDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellDetailHeader.xib; sourceTree = "<group>"; };
@@ -218,6 +218,7 @@
 		84C5F6AD226649170090B87B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8484BBF0226A866600C20E40 /* ContactDetailViewController.swift */,
 				84C964902268231B009A255F /* Cells */,
 			);
 			path = View;
@@ -263,7 +264,6 @@
 		84C964902268231B009A255F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8484BBF0226A866600C20E40 /* DetailViewController.swift */,
 				84C5F6B722678C8E0090B87B /* ThreeLabelCell */,
 				84C5F6B22266A4180090B87B /* HeaderCell */,
 			);
@@ -442,7 +442,7 @@
 				8484BBEE226A865400C20E40 /* DetailViewModel.swift in Sources */,
 				84C5F6AB226248C00090B87B /* HomeViewController.swift in Sources */,
 				8484BBF4226A867400C20E40 /* TableViewCellThreeLabel.swift in Sources */,
-				8484BBF1226A866600C20E40 /* DetailViewController.swift in Sources */,
+				8484BBF1226A866600C20E40 /* ContactDetailViewController.swift in Sources */,
 				84C5F6A9226248A60090B87B /* Services.swift in Sources */,
 				8484BBFC226A869E00C20E40 /* TableViewCellRegisterList.swift in Sources */,
 				84C9649C2268D17F009A255F /* ContactListViewController.swift in Sources */,

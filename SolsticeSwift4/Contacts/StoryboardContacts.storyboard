@@ -45,45 +45,10 @@
             </objects>
             <point key="canvasLocation" x="1609" y="-591"/>
         </scene>
-        <!--List View Controller-->
-        <scene sceneID="jL4-PC-v0y">
-            <objects>
-                <viewController id="2kw-75-14e" customClass="ListViewController" customModule="SolsticeSwift4" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bax-3t-MLm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uAg-n9-wh3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="2kw-75-14e" id="Lms-57-rbx"/>
-                                    <outlet property="delegate" destination="2kw-75-14e" id="DV5-wk-42K"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="uAg-n9-wh3" firstAttribute="top" secondItem="j7N-jR-8hv" secondAttribute="top" id="4Qu-Rt-ZPl"/>
-                            <constraint firstItem="j7N-jR-8hv" firstAttribute="bottom" secondItem="uAg-n9-wh3" secondAttribute="bottom" id="4o7-XJ-czg"/>
-                            <constraint firstItem="j7N-jR-8hv" firstAttribute="trailing" secondItem="uAg-n9-wh3" secondAttribute="trailing" id="OCS-5o-sKE"/>
-                            <constraint firstItem="uAg-n9-wh3" firstAttribute="leading" secondItem="j7N-jR-8hv" secondAttribute="leading" id="qgi-TZ-Lwu"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="j7N-jR-8hv"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="uAg-n9-wh3" id="J3M-B9-SBK"/>
-                        <segue destination="aig-OS-Tko" kind="show" identifier="segue_to_detail" id="3mh-I5-65w"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="40b-Sc-zeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1610" y="117"/>
-        </scene>
-        <!--Detail View Controller-->
+        <!--Contact Detail View Controller-->
         <scene sceneID="fnt-Bv-QbD">
             <objects>
-                <viewController id="aig-OS-Tko" customClass="DetailViewController" customModule="SolsticeSwift4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aig-OS-Tko" customClass="ContactDetailViewController" customModule="SolsticeSwift4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fgY-UH-mMD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +80,4 @@
             <point key="canvasLocation" x="2633" y="-591"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="65L-wR-0g2"/>
-    </inferredMetricsTieBreakers>
 </document>

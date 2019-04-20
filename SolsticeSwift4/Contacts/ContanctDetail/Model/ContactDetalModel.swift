@@ -8,13 +8,13 @@
 
 import Foundation
 
-class DetailModel {
-    var contactReceived : GeneralInfo!
-    var oldIsFavorite : Bool!
+class ContactDetailModel {
+    var receivedContact : ContactData!
+    var isFavorite_oldValue : Bool!
     
     
-    init(contactReceived: GeneralInfo) {
-        self.contactReceived = contactReceived
-        oldIsFavorite = contactReceived.isFavorite
+    init(receivedContact: ContactData) {
+        self.receivedContact = receivedContact
+        isFavorite_oldValue = receivedContact.isFavorite
     }
 }

@@ -35,7 +35,7 @@ class TestServiceManager: XCTestCase {
             }
             
             do {
-                let array = try JSONDecoder().decode([GeneralInfo].self, from: json)
+                let array = try JSONDecoder().decode([ContactData].self, from: json)
                 
                 //save data to model
                 let model = ContactListModel(data: array)
